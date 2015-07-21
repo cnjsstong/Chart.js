@@ -192,6 +192,7 @@
 				ctx : this.chart.ctx,
 				templateString: this.options.scaleLabel,
 				labels: data.labels,
+				labelsColor: data.labelsColor,
 				valuesCount: data.datasets[0].data.length
 			});
 
