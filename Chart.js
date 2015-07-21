@@ -2073,12 +2073,18 @@
 							ctx.textBaseline = 'top';
 						}
 
-						Chart.helpers.drawRoundedRectangle(ctx, pointLabelPosition.x - 20, pointLabelPosition.y - 10, 40, 20, 10);
+						if(this.labelsColor && this.labelsColor[i]) {
 
-						ctx.fillStyle = this.labelsColor[i];
-						ctx.fill();
+							Chart.helpers.drawRoundedRectangle(ctx, pointLabelPosition.x - 20, pointLabelPosition.y - 10, 40, 20, 10);
 
-						ctx.fillStyle = 'white';
+							ctx.fillStyle = this.labelsColor[i];
+							ctx.fill();
+							ctx.fillStyle = 'white';
+
+						} else {
+							ctx.fillStyle = this.textColor;
+						}
+
 						ctx.textAlign = "center";
 						ctx.textBaseline = "middle";
 
@@ -3530,6 +3536,7 @@
 				ctx : this.chart.ctx,
 				templateString: this.options.scaleLabel,
 				labels: data.labels,
+				labelsColor: data.labelsColor,
 				valuesCount: data.datasets[0].data.length
 			});
 
