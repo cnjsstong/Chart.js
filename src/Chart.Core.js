@@ -2045,7 +2045,7 @@
 							ctx.closePath();
 						}
 						// Extra 3px out for some label spacing
-						var pointLabelPosition = this.getPointPosition(i, this.calculateCenterOffset(this.max) + 5);
+						var pointLabelPosition = this.getPointPosition(i, this.calculateCenterOffset(this.max) + 25);
 						ctx.font = fontString(this.pointLabelFontSize,this.pointLabelFontStyle,this.pointLabelFontFamily);
 						ctx.fillStyle = this.pointLabelFontColor;
 
@@ -2072,6 +2072,15 @@
 						} else {
 							ctx.textBaseline = 'top';
 						}
+
+						Chart.helpers.drawRoundedRectangle(ctx, pointLabelPosition.x - 20, pointLabelPosition.y - 10, 40, 20, 10);
+
+						ctx.fillStyle = this.labelsColor[i];
+						ctx.fill();
+
+						ctx.fillStyle = 'white';
+						ctx.textAlign = "center";
+						ctx.textBaseline = "middle";
 
 						ctx.fillText(this.labels[i], pointLabelPosition.x, pointLabelPosition.y);
 					}
